@@ -99,7 +99,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
     try {
       final response = await http.get(
-        Uri.parse('https://panditji-printing-panditjihotel.vercel.app/config.json'),
+        // TODO: Replace this URL with your own Vercel config endpoint.
+        // See README.md for instructions on setting this up.
+        Uri.parse('https://YOUR-PROJECT.vercel.app/config.json'),
       ).timeout(const Duration(seconds: 10));
 
       if (response.statusCode == 200) {

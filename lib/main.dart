@@ -1,12 +1,7 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_lucide/flutter_lucide.dart';
-import 'package:http/http.dart' as http;
-import 'dart:js' as js;
-import 'package:flutter/foundation.dart' show kIsWeb;
-import 'package:flutter/services.dart';
 import 'screens/passport_tool.dart';
 import 'screens/id_card_tool.dart';
 import 'screens/settings_screen.dart';
@@ -20,34 +15,9 @@ void main() async {
   } catch (e) {
     debugPrint("Warning: No .env configuration found. Defaulting to empty.");
   }
-
-  // Auto-sync API key from Vercel config silently on every startup
-  _autoSyncApiKey();
   
   runApp(const PanditjiApp());
 }
-
-/// Silently fetches the latest remove.bg API key from the Vercel config endpoint
-/// and stores it in SharedPreferences — no UI interaction required.
-Future<void> _autoSyncApiKey() async {
-  try {
-    final response = await http.get(
-      Uri.parse('https://panditji-printing-panditjihotel.vercel.app/config.json'),
-    ).timeout(const Duration(seconds: 10));
-    if (response.statusCode == 200) {
-      final data = jsonDecode(response.body) as Map<String, dynamic>;
-      final cloudKey = data['remove_bg_api_key']?.toString() ?? '';
-      if (cloudKey.isNotEmpty) {
-        final prefs = await SharedPreferences.getInstance();
-        await prefs.setString('REMOVE_BG_API_KEY', cloudKey);
-        debugPrint("API key auto-synced from Vercel.");
-      }
-    }
-  } catch (e) {
-    debugPrint("Auto-sync skipped (no internet or timeout): $e");
-  }
-}
-
 
 class PanditjiApp extends StatefulWidget {
   const PanditjiApp({super.key});
@@ -159,63 +129,17 @@ class _MainNavigationState extends State<MainNavigation> {
 
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: 85.0,
+        toolbarHeight: 60.0,
         centerTitle: true,
-        title: Column(
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
           mainAxisSize: MainAxisSize.min,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Icon(LucideIcons.printer, size: 24, color: Theme.of(context).colorScheme.primary),
-                const SizedBox(width: 8),
-                const Text(
-                  'Panditji Hotel',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
-                ),
-              ],
-            ),
-            const SizedBox(height: 4),
-            GestureDetector(
-              onTap: () {
-                const url = 'https://maps.app.goo.gl/ziW4AX8jeZK4eED58';
-                if (kIsWeb) {
-                  js.context.callMethod('open', [url]);
-                } else {
-                  Clipboard.setData(const ClipboardData(text: url));
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      content: Text('Map location link copied to clipboard!'),
-                      behavior: SnackBarBehavior.floating,
-                    ),
-                  );
-                }
-              },
-              child: MouseRegion(
-                cursor: SystemMouseCursors.click,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Icon(
-                      LucideIcons.map_pin,
-                      size: 14,
-                      color: Theme.of(context).colorScheme.primary.withAlpha(200),
-                    ),
-                    const SizedBox(width: 4),
-                    Text(
-                      'Ramtek road Mauda - View on Map',
-                      style: TextStyle(
-                        fontSize: 12,
-                        color: Theme.of(context).colorScheme.primary.withAlpha(200),
-                        fontWeight: FontWeight.w600,
-                        decoration: TextDecoration.underline,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+            Icon(LucideIcons.printer, size: 22, color: Theme.of(context).colorScheme.primary),
+            const SizedBox(width: 8),
+            const Text(
+              'Passport Photo Printer',
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
             ),
           ],
         ),
