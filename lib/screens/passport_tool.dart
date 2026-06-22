@@ -10,8 +10,7 @@ import 'package:printing/printing.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:math' as math;
-import 'dart:io';
-import 'dart:convert';
+import 'dart:io' if (dart.library.html) 'package:panditji_printing_app/web_io_stub.dart';
 import 'package:flutter/services.dart';
 
 class _PersonData {
