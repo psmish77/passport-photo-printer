@@ -1,0 +1,51 @@
+﻿Analyzing panditji_printing_app...                              
+
+   info - 'background' is deprecated and shouldn't be used. Use surface instead. This feature was deprecated after v3.18.0-0.1.pre - lib\main.dart:63:7 - deprecated_member_use
+   info - 'background' is deprecated and shouldn't be used. Use surface instead. This feature was deprecated after v3.18.0-0.1.pre - lib\main.dart:73:7 - deprecated_member_use
+   info - 'background' is deprecated and shouldn't be used. Use surface instead. This feature was deprecated after v3.18.0-0.1.pre - lib\main.dart:86:46 - deprecated_member_use
+   info - 'background' is deprecated and shouldn't be used. Use surface instead. This feature was deprecated after v3.18.0-0.1.pre - lib\main.dart:88:40 - deprecated_member_use
+   info - 'background' is deprecated and shouldn't be used. Use surface instead. This feature was deprecated after v3.18.0-0.1.pre - lib\main.dart:98:45 - deprecated_member_use
+   info - 'background' is deprecated and shouldn't be used. Use surface instead. This feature was deprecated after v3.18.0-0.1.pre - lib\main.dart:100:39 - deprecated_member_use
+   info - The import of 'dart:typed_data' is unnecessary because all of the used elements are also provided by the import of 'package:flutter/foundation.dart' - lib\screens\id_card_tool.dart:2:8 - unnecessary_import
+   info - Don't use 'BuildContext's across async gaps - lib\screens\id_card_tool.dart:46:34 - use_build_context_synchronously
+   info - 'background' is deprecated and shouldn't be used. Use surface instead. This feature was deprecated after v3.18.0-0.1.pre - lib\screens\id_card_tool.dart:46:55 - deprecated_member_use
+   info - Don't use 'BuildContext's across async gaps - lib\screens\id_card_tool.dart:47:40 - use_build_context_synchronously
+   info - 'onBackground' is deprecated and shouldn't be used. Use onSurface instead. This feature was deprecated after v3.18.0-0.1.pre - lib\screens\id_card_tool.dart:47:61 - deprecated_member_use
+   info - The variable name 'A4Width' isn't a lowerCamelCase identifier - lib\screens\id_card_tool.dart:125:17 - non_constant_identifier_names
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\screens\id_card_tool.dart:225:49 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\screens\id_card_tool.dart:275:53 - deprecated_member_use
+   info - 'value' is deprecated and shouldn't be used. Use initialValue instead. This will set the initial value for the form field. This feature was deprecated after v3.33.0-1.0.pre - lib\screens\id_card_tool.dart:283:19 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\screens\id_card_tool.dart:338:58 - deprecated_member_use
+   info - The import of 'dart:typed_data' is unnecessary because all of the used elements are also provided by the import of 'package:flutter/foundation.dart' - lib\screens\passport_tool.dart:2:8 - unnecessary_import
+warning - Unused import: 'dart:convert' - lib\screens\passport_tool.dart:3:8 - unused_import
+   info - Don't use 'BuildContext's across async gaps - lib\screens\passport_tool.dart:98:30 - use_build_context_synchronously
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\screens\passport_tool.dart:188:164 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\screens\passport_tool.dart:240:81 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\screens\passport_tool.dart:249:166 - deprecated_member_use
+  error - Arguments of a constant creation must be constant expressions - lib\screens\passport_tool.dart:260:59 - const_with_non_constant_argument
+  error - The getter 'minus_circle' isn't defined for the type 'LucideIcons' - lib\screens\passport_tool.dart:260:71 - undefined_getter
+  error - Arguments of a constant creation must be constant expressions - lib\screens\passport_tool.dart:262:59 - const_with_non_constant_argument
+  error - The getter 'plus_circle' isn't defined for the type 'LucideIcons' - lib\screens\passport_tool.dart:262:71 - undefined_getter
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\screens\settings_screen.dart:116:53 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\screens\settings_screen.dart:119:39 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\screens\settings_screen.dart:142:65 - deprecated_member_use
+   info - 'onBackground' is deprecated and shouldn't be used. Use onSurface instead. This feature was deprecated after v3.18.0-0.1.pre - lib\screens\settings_screen.dart:170:76 - deprecated_member_use
+   info - 'background' is deprecated and shouldn't be used. Use surface instead. This feature was deprecated after v3.18.0-0.1.pre - lib\screens\settings_screen.dart:171:76 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\screens\settings_screen.dart:190:34 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\screens\settings_screen.dart:192:53 - deprecated_member_use
+  error - The name 'MyApp' isn't a class - test\widget_test.dart:16:35 - creation_with_non_type
+
+flutter : 34 issues found. (ran 
+in 11.5s)
+At line:1 char:1
++ flutter analyze --no-pub 2>&1 
+| Out-File -FilePath 
+analyze_output_utf ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : No 
+   tSpecified: (34 issues found  
+  . (ran in 11.5s):String) [],   
+  RemoteException
+    + FullyQualifiedErrorId : Na 
+   tiveCommandError
+ 
