@@ -1,4 +1,4 @@
-import 'dart:io' show Platform;
+import 'dart:io' if (dart.library.html) 'package:panditji_printing_app/web_io_stub.dart' show Platform;
 import 'package:flutter/foundation.dart' show debugPrint;
 import 'package:flutter/services.dart';
 
