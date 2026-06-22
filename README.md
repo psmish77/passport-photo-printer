@@ -96,6 +96,28 @@ lib/
 
 ---
 
+## 🏗️ Cross-Platform Architecture & Resource Optimization
+
+### 1. Cross-Platform Compilation (Web & Mobile Coexistence)
+Flutter Web and native Mobile targets have different API availabilities. To build the application for both targets simultaneously:
+- **`dart:io` & `dart:js` Mitigation**: Native platforms support file-system access (`dart:io`), while Web supports browser interop (`dart:js`, `dart:html`). Direct imports of these on the wrong platform cause fatal compile-time errors.
+- **Conditional Imports & Stubs**:
+  - We implemented a web-safe stub (`web_io_stub.dart`) to mock `File` and `Platform` on Web.
+  - We implemented custom browser stubs (`web_utils.dart` and `web_utils_web.dart`) to mock URL-opening behavior (`dart:html` wrapper) conditionally:
+    ```dart
+    import 'web_utils.dart' if (dart.library.html) 'web_utils_web.dart' as web_utils;
+    ```
+- **Dummy Environment Asset**: The project uses a `.env` file for API key configurations. Since `.env` is ignored by Git, clean build environments (Vercel and GitHub Actions CI) would crash trying to resolve it as a declared asset. We resolved this by adding automatic dummy `.env` generation to the build scripts.
+
+### 2. Resource Optimization
+This app is designed to run with a minimal hardware footprint:
+- **Play Services Scanner Offloading**: Instead of compiling massive C++ OpenCV binaries or running custom edge detection scripts in Dart, we offload document scanning, border-cropping, and perspective warping to the native **Google Play Services Document Scanner API**.
+- **GPU Preview Acceleration**: Brightness, contrast, and saturation previews are processed at 60/120 FPS directly on the GPU using color matrix shaders, completely skipping CPU pixel-level iteration.
+- **Isolate Offloading**: Heavy tasks (like the Remini HD 3x3 sharpening convolution kernel and local background segmentations) are offloaded to Dart isolates (`compute` thread pools), keeping the UI thread completely smooth.
+- **Downscale-on-Load**: Images are resized immediately upon picking (max width 450px for passport photo grid cells), dropping memory consumption by over 90% during PDF compilation.
+
+---
+
 ## 📦 Building
 
 ```bash
