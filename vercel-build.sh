@@ -4,8 +4,8 @@
 set -e
 
 echo "=== Cloning Flutter Stable SDK ==="
-# Clone the stable channel with depth 1 to speed up download
-git clone https://github.com/flutter/flutter.git -b stable --depth 1
+# Clone the specific version tag (3.38.9) to match the local working environment
+git clone https://github.com/flutter/flutter.git -b 3.38.9 --depth 1
 
 # Add Flutter to the executable PATH
 export PATH="$PATH:$(pwd)/flutter/bin"
